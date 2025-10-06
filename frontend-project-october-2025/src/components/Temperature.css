@@ -1,3 +1,16 @@
+.alertBox {
+	width: 100%;
+}
+
+.chart-group {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	gap: 50px;
+	height: 100%;
+	justify-content: center;
+}
+
 .dashboard {
 	min-width: 1280px;
 	display: flex;
@@ -7,14 +20,7 @@
 	color: rgb(38, 38, 38);
 	background-color: #edebf4;
 }
-.chart-group {
-	width: 100%;
-	display: flex;
-	flex-direction: row;
-	gap: 50px;
-	height: 100%;
-	justify-content: center;
-}
+
 .temp-line-chart {
 	display: flex;
 	flex-direction: column;
