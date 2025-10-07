@@ -5,12 +5,13 @@ import { LineCharts } from './LineCharts';
 import type { DataGridRow, TemperatureReading } from '../models/temperature';
 import { temperatureAPI } from '../controllers/Temperatures';
 import { TempTable } from './TempTable';
-import AlertSnackbar from './WarningAlert';
+import WarningAlert from './WarningAlert';
 
 export const TemperatureDashboard: React.FC = () => {
 	const [temperatures, setTemperatures] = useState<TemperatureReading[]>([]);
 	const [loading, setLoading] = useState<boolean>(true);
 	const [refresher, setRefresher] = useState<number>(1);
+	const [alertType, setAlertType] = useState<'t' | 'h' | null>(null);
 	const [error, setError] = useState<string | null>(null);
 
 	const humidityLimit = 70;
@@ -21,6 +22,15 @@ export const TemperatureDashboard: React.FC = () => {
 			setLoading(true);
 			const data = await temperatureAPI.getTemperatures();
 			setTemperatures(data);
+			if (data.length > 0) {
+				if (data[0].temperature > tempLimit) {
+					setAlertType('t');
+				} else if (data[0].humidity > humidityLimit) {
+					setAlertType('h');
+				} else {
+					setAlertType(null);
+				}
+			}
 			setError(null);
 		} catch (err) {
 			setError(err instanceof Error ? err.message : 'Failed to fetch data');
@@ -34,7 +44,6 @@ export const TemperatureDashboard: React.FC = () => {
 		const interval = setInterval(() => {
 			setRefresher((prev) => prev + 1);
 		}, 1000);
-		console.log(temperatures[0].temperature, temperatures[0].humidity);
 		return () => clearInterval(interval);
 	}, [refresher]);
 
@@ -51,16 +60,11 @@ export const TemperatureDashboard: React.FC = () => {
 
 	return (
 		<div className="dashboard">
-			{temperatures[0].temperature > tempLimit && (
-				<AlertSnackbar alertType={'t'} />
-			)}
-			{temperatures[0].humidity > humidityLimit && (
-				<AlertSnackbar alertType={'h'} />
-			)}
+			<WarningAlert alertType={alertType} />
 			<h1>🌡️ Temperature Dashboard</h1>
 			<div className="chart-group">
 				<div className="temp-table">
-					<TempTable dataset={dataset} />
+					<TempTable dataset={dataset.slice(0, 9)} />
 				</div>
 				<div className="temp-line-chart">
 					<h3>Recent Readings</h3>

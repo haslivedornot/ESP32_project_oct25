@@ -19,7 +19,7 @@ export const LineCharts = ({ dataset }: { dataset: DataGridRow[] }) => {
 						},
 					},
 				]}
-				yAxis={[{ min: 15, max: 30, label: 'Temperature (°C)' }]}
+				yAxis={[{ min: 15, max: 60, label: 'Temperature (°C)' }]}
 				series={[
 					{
 						dataKey: 'temperature',

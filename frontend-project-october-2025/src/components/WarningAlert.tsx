@@ -1,6 +1,10 @@
 import Alert from '@mui/material/Alert';
 
-export default function AlertSnackbar({ alertType }: { alertType: 'h' | 't' }) {
+export default function WarningAlert({
+	alertType,
+}: {
+	alertType: 'h' | 't' | null;
+}) {
 	const message =
 		alertType === 't'
 			? 'Warning! High temperature detected.'
@@ -8,9 +12,13 @@ export default function AlertSnackbar({ alertType }: { alertType: 'h' | 't' }) {
 
 	return (
 		<div className="alertBox">
-			<Alert severity="warning" variant="filled" sx={{ width: '100%' }}>
-				{message}
-			</Alert>
+			{alertType == null ? (
+				<></>
+			) : (
+				<Alert severity="warning" variant="filled" sx={{ width: '100%' }}>
+					{message}
+				</Alert>
+			)}
 		</div>
 	);
 }

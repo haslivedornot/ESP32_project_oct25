@@ -4,7 +4,7 @@ import type { DataGridRow } from '../models/temperature';
 
 export const TempTable = ({ dataset }: { dataset: DataGridRow[] }) => {
 	const columns: GridColDef<DataGridRow>[] = [
-		{ field: 'id', headerName: 'ID', width: 100 },
+		{ field: 'id', headerName: 'ID', width: 50 },
 		{
 			field: 'time',
 			headerName: 'Time',
