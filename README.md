@@ -6,7 +6,7 @@
 ### About
 This project is mandatory part of our degree programme in Electronics in the first period of our studies in Metropolia UAS, October 2025.
 
-An embedded system project where an ESP32 was connected to a humidity and temperature sensor, as well as an LED bar and LCD screen that provides visual reading on the current temperature and humidity. When those two variables exceeded the set limit, the program will trigger a warning and turns on a fan connected to the board to lower the temperature.
+An embedded system project where an ESP32 was connected to a humidity and temperature sensor, as well as an LED bar and LCD screen that provides visual reading on the current temperature and humidity. When those two variables exceeded the set limit, the program will trigger a warning and turns on a fan connected to the board to lower the temperature. There is also audible warning from the hardware, which can be turned off by pressing a button.
 The readings will be sent to a web server that keeps track of recent readings and provide warnings to the end-users as shown below.
 
 Our team earned full points as our final grade.
