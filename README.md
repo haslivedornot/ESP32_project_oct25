@@ -15,6 +15,6 @@ The code for this project was written in rthe Arduino IDE, while the web app was
 
 <img width="2127" height="1187" alt="image" src="https://github.com/user-attachments/assets/f8637d44-e3b6-4196-8864-a1f1a9314eeb" />
 
-####Personal contribution:
+Personal contribution:
 Svetlana Khodos:
 My main role on the project was designing the circuit and programming the hardware to perform the functions.
